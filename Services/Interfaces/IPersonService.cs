@@ -7,6 +7,7 @@ namespace Services.Interfaces
 {
     public interface IPersonService
     {
-        IList<Person> Search(PersonSearchParameters personSearchParameters, int maxNumberOfResults, string emailForResults);
+        void Search(PersonSearchParameters personSearchParameters, int maxNumberOfResults, string emailForResults);
+        IList<Person> ReSeed(int count);
     }
 }

@@ -1,35 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Models;
-using Repositories;
+using Repositories.Interfaces;
 using Services.Interfaces;
 
 namespace Services
 {
     public class PersonService : IPersonService
     {
-        public IList<Person> Search()
+        private readonly IPersonRepository _personRepository;
+
+        public PersonService(IPersonRepository personRepository)
         {
-            var personRepository = new PersonRepository();
+            _personRepository = personRepository;
+        }
 
-            var nationality = new Nationality { Title = "The irish", Description = "Description for irish " };
+        public void Search(PersonSearchParameters personSearchParameters, int maxNumberOfResults, string emailForResults)
+        {
+            var persons = _personRepository.Search(personSearchParameters, maxNumberOfResults);
+            //TODO:
+            /*
+             * Prepares found criminal profiles as PDF files (one person per file)
+             * Email the files to the recipient (maximum 10 files per email, so could be multiple emails).
+             */
+        }
 
-            personRepository.Persons.Add(new Person
-            {
-                Sex = Sex.Man,
-                Age = 21,
-                Name = "Rupert",
-                Surname = "TheDeer"
-                ,
-                Nationality = nationality
-
-            });
-            personRepository.SaveChanges();
-
-            return personRepository.Persons.ToList();
+        public IList<Person> ReSeed(int count)
+        {
+            return _personRepository.ReSeed(count);
         }
     }
 }

@@ -4,7 +4,7 @@
     {
         public string Name { get; set; }
         public string Surname { get; set; }
-        public Sex Sex { get; set; }
+        public Sex? Sex { get; set; }
 
         public int? AgeFrom { get; set; }
         public int? AgeTo { get; set; }

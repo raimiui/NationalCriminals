@@ -4,12 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{E6A512A1-2A49-4746-9440-9E9EB11B3318}"
+	ProjectSection(ProjectDependencies) = postProject
+		{940E7248-A697-43D5-8928-A73202EED0AA} = {940E7248-A697-43D5-8928-A73202EED0AA}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{2650AB64-28F7-4821-9BF5-DE85F8793C77}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{1E823AD7-BE4B-4C49-B910-0EB35E0276D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{29FCEC07-DD40-45F5-9BFF-FCA031B86056}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF", "WCF\WCF.csproj", "{940E7248-A697-43D5-8928-A73202EED0AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +38,15 @@ Global
 		{29FCEC07-DD40-45F5-9BFF-FCA031B86056}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29FCEC07-DD40-45F5-9BFF-FCA031B86056}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29FCEC07-DD40-45F5-9BFF-FCA031B86056}.Release|Any CPU.Build.0 = Release|Any CPU
+		{940E7248-A697-43D5-8928-A73202EED0AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{940E7248-A697-43D5-8928-A73202EED0AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{940E7248-A697-43D5-8928-A73202EED0AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{940E7248-A697-43D5-8928-A73202EED0AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal
