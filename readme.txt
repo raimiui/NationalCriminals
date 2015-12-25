@@ -12,7 +12,7 @@ Return validation messages from WCF?
 
 Autommaper added for WCF contract mapping
 Should add tests for mappings, search (without sending email, just check if data from PersonRepository matches search parameters).
-
+Tests for search query.
 Introduce queueing.
 
 Spent 3 hours trying to run WCF on Local IIS, did not succeed, continued with Express IIS (metadata issue).
@@ -26,14 +26,14 @@ Retry email send.
 
 Configurable settings can be set in appSettings of the application configuration file.
 
+MVC search form: say successfully/not request was sent
+
+Check for sql injection possibilities.
 
 
 Liko:
-Search forma -> Request to WCF
 Validacijos WCF
-
-create pdfs 
-send email
+Login
 
 Diagramas paslifuot
 
@@ -43,3 +43,5 @@ Video
 
 
 ----------------
+Presentation: 
+Can search by part name

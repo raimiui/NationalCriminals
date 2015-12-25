@@ -30,11 +30,30 @@ namespace Services
                 foreach (Document att in attachments)
                     message.Attachments.Add(new System.Net.Mail.Attachment(att.Content, att.FileName));
 
-            using (var smtp = new System.Net.Mail.SmtpClient(_smtpHost))//, 587
+
+            try
             {
-                smtp.Credentials = new System.Net.NetworkCredential(_fromEmail, _fromEmailPassword);
-                smtp.Send(message);
+                using (var smtp = new System.Net.Mail.SmtpClient(_smtpHost)) //, 587
+                {
+                    smtp.Credentials = new System.Net.NetworkCredential(_fromEmail, _fromEmailPassword);
+                    smtp.Send(message);
+                }
             }
+            catch (Exception)
+            {
+                //TODO: logging...
+                throw;
+            }
+            finally
+            {
+                if (attachments != null)
+                    foreach (Document att in attachments)
+                    {
+                        att.Content.Dispose();
+                        att.Content.Close();
+                    }
+            }
+            
         }
     }
 }

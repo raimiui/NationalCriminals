@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -173,6 +176,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Automappings.cs" />
+    <Compile Include="App_Start\Bootstrap.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -296,6 +301,10 @@
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{29FCEC07-DD40-45F5-9BFF-FCA031B86056}</Project>
       <Name>Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCF\WCF.csproj">
+      <Project>{940E7248-A697-43D5-8928-A73202EED0AA}</Project>
+      <Name>WCF</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

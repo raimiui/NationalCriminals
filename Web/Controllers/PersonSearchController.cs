@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using Services.Interfaces;
 using Web.Models;
 using Web.NationalCriminalsWebService;
@@ -31,8 +32,9 @@ namespace Web.Controllers
 
             try
             {
+                var personSearchParametersDto = Mapper.Map<PersonSearchParametersDto>(viewModel);
                 var personWebServiceClient = new NationalCriminalsWebService.PersonWebServiceClient();
-                var passed = personWebServiceClient.Search(new PersonSearchParametersDto { AgeFrom = 2 }, 7, viewModel.Email);
+                var passed = personWebServiceClient.Search(personSearchParametersDto, 7, viewModel.Email);
 
                 if(passed)
                     return RedirectToAction("Index");

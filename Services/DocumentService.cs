@@ -35,11 +35,9 @@ namespace Services
             DrawStringInNextLine(string.Format("Weight: {0}kg", person.Weight), gfx, page, font, lineNumber++ * lineHeight);
             DrawStringInNextLine("Nationality: " + person.Nationality.Title, gfx, page, font, lineNumber++ * lineHeight);
 
-            using (var stream = new MemoryStream())
-            {
-                doc.Save(stream, false);
-                return new Document { FileName = string.Format("{0} {1}.pdf", person.Name, person.Surname), Content = stream };
-            }
+            var stream = new MemoryStream();
+            doc.Save(stream, false);
+            return new Document { FileName = string.Format("{0} {1}.pdf", person.Name, person.Surname), Content = stream };
         }
 
         void DrawStringInNextLine(string text, XGraphics gfx, PdfPage page, XFont font, int line)

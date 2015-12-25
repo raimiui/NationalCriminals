@@ -13,7 +13,7 @@ namespace Models
         public Sex Sex { get; set; }
         public int Height { get; set; }
         public int Weight { get; set; }
-        public Nationality Nationality { get; set; }
+        public virtual Nationality Nationality { get; set; }
     }
 
     public enum Sex

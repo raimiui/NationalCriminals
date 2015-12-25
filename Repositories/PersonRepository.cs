@@ -55,10 +55,12 @@ namespace Repositories
                 var rand = _rnd.Next(1000);
                 persons.Add(new Person
                 {
-                    Sex = (Sex)_rnd.Next(1),
+                    Name = "Name " + rand,
+                    Surname = "Surname " + rand,
+                    Sex = (Sex)_rnd.Next(2),
                     Age = _rnd.Next(1, 100),
-                    Name = "Test name " + rand,
-                    Surname = "Test surname " + rand,
+                    Height = _rnd.Next(0, 300),
+                    Weight = _rnd.Next(0, 200),
                     Nationality = Nationalities.Local.OrderBy(n => n.Id).Skip(_rnd.Next(Nationalities.Local.Count()) - 1).First()
                 });
             }
@@ -73,9 +75,9 @@ namespace Repositories
                 Persons
                     .Where
                     (p =>
-                        (string.IsNullOrEmpty(psp.Name) || p.Name == psp.Name)
+                        (string.IsNullOrEmpty(psp.Name) || p.Name.Contains(psp.Name))
                         &&
-                        (string.IsNullOrEmpty(psp.Surname) || p.Surname == psp.Surname)
+                        (string.IsNullOrEmpty(psp.Surname) || p.Surname.Contains(psp.Surname))
                         &&
                         (!psp.Sex.HasValue || p.Sex == psp.Sex)
                         &&
@@ -91,7 +93,7 @@ namespace Repositories
                         &&
                         (!psp.WeightTo.HasValue || p.Weight <= psp.WeightTo)
                         &&
-                        (string.IsNullOrEmpty(psp.NationalityTitle) || p.Nationality.Title == psp.NationalityTitle)
+                        (string.IsNullOrEmpty(psp.NationalityTitle) || p.Nationality.Title.Contains(psp.NationalityTitle))
                      )
                     .Take(maxNumberOfResults)
                     .ToList();

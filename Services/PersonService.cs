@@ -35,12 +35,12 @@ namespace Services
 
                 var persons = _personRepository.Search(personSearchParameters, maxNumberOfResults);
                 var attachments = _documentService.PrepareDocuments(persons);
-                _mailService.Send(emailForResults, attachments);
 
                 for (var i = 0; i < attachments.Length / _attachmentsCountPerEmail + 1; i++)
                 {
                     var documents = attachments.Skip(i * _attachmentsCountPerEmail).Take(_attachmentsCountPerEmail).ToArray();
-                    _mailService.Send(emailForResults, documents);
+                    if (documents.Any())
+                        _mailService.Send(emailForResults, documents);
                 }
             }
             catch (Exception)
