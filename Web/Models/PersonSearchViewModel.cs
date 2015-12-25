@@ -38,6 +38,8 @@ namespace Web.Models
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+        [Bindable(false)]
+        public bool SearchWasSuccessful { get; set; }
     }
 
     public enum Sex

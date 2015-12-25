@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,13 +11,16 @@ using Web.NationalCriminalsWebService;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class PersonSearchController : Controller
     {
         private readonly IPersonService _personService;
+        private readonly int _maxNumberOfSearchResults;
 
         public PersonSearchController(IPersonService personService)
         {
             _personService = personService;
+            int.TryParse(ConfigurationManager.AppSettings["MaxNumberOfSearchResults"], out _maxNumberOfSearchResults);
         }
 
         public ActionResult Index()
@@ -34,10 +38,12 @@ namespace Web.Controllers
             {
                 var personSearchParametersDto = Mapper.Map<PersonSearchParametersDto>(viewModel);
                 var personWebServiceClient = new NationalCriminalsWebService.PersonWebServiceClient();
-                var passed = personWebServiceClient.Search(personSearchParametersDto, 7, viewModel.Email);
+                var passed = personWebServiceClient.Search(personSearchParametersDto, _maxNumberOfSearchResults, viewModel.Email);
 
+                viewModel.SearchWasSuccessful = passed;
                 if(passed)
-                    return RedirectToAction("Index");
+                
+                    return View(viewModel);
 
                 return View("Error");
             }

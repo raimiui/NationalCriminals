@@ -32,3 +32,9 @@ textarea {
 .validation-summary-errors {
     color: red;
 }
+
+p.successfull-request {
+    color: green;
+    font-weight: bold;
+    display: inline;
+}

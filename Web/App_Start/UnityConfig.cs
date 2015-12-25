@@ -1,10 +1,16 @@
 using System;
+using System.Data.Entity;
+using System.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using Repositories;
 using Repositories.Interfaces;
 using Services;
 using Services.Interfaces;
+using Web.Models;
 
 namespace Web.App_Start
 {
@@ -38,6 +44,14 @@ namespace Web.App_Start
         {
             // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
             // container.LoadConfiguration();
+
+            container.RegisterType(typeof(UserManager<>),
+            new InjectionConstructor(typeof(IUserStore<>)));
+            container.RegisterType<Microsoft.AspNet.Identity.IUser>(new InjectionFactory(c => c.Resolve<Microsoft.AspNet.Identity.IUser>()));
+            container.RegisterType(typeof(IUserStore<>), typeof(UserStore<>));
+            container.RegisterType<IdentityUser, ApplicationUser>(new ContainerControlledLifetimeManager());
+            container.RegisterType<DbContext, ApplicationDbContext>(new ContainerControlledLifetimeManager());
+            container.RegisterType<IAuthenticationManager>(new InjectionFactory(o => HttpContext.Current.GetOwinContext().Authentication));
 
             // Repositories
             container.RegisterType<IPersonRepository, PersonRepository>(new HierarchicalLifetimeManager());
