@@ -21,11 +21,16 @@ Deployment configs?..
 Consider extracting interfaces to separate libs.
 
 Logging for web, wcf....
+Localization support: Email body, subject to resource files.
+Retry email send.
+
+Configurable settings can be set in appSettings of the application configuration file.
+
 
 
 Liko:
 Search forma -> Request to WCF
-Validacijos Web ir WCF
+Validacijos WCF
 
 create pdfs 
 send email
@@ -33,3 +38,8 @@ send email
 Diagramas paslifuot
 
 Video
+
+
+
+
+----------------

@@ -44,6 +44,8 @@ namespace Web.App_Start
 
             // Services
             container.RegisterType<IPersonService, PersonService>();
+            container.RegisterType<IDocumentService, DocumentService>();
+            container.RegisterType<IMailService, MailService>();
         }
     }
 }

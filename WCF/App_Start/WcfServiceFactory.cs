@@ -24,6 +24,8 @@ namespace WCF {
             // Services
             container.RegisterType<IPersonWebService, PersonWebService>();
             container.RegisterType<IPersonService, PersonService>();
+            container.RegisterType<IDocumentService, DocumentService>();
+            container.RegisterType<IMailService, MailService>();
         }
     }
 }
