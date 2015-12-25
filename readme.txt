@@ -18,7 +18,9 @@ Introduce queueing.
 Spent 3 hours trying to run WCF on Local IIS, did not succeed, continued with Express IIS (metadata issue).
 
 Deployment configs?..
+Consider extracting interfaces to separate libs.
 
+Logging for web, wcf....
 
 
 Liko:

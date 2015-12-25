@@ -12,18 +12,8 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IPersonService _personService;
-
-        public HomeController(IPersonService personService)
-        {
-            _personService = personService;
-        }
-
         public ActionResult Index()
         {
-
-            var personWebServiceClient = new NationalCriminalsWebService.PersonWebServiceClient();
-            var succeeded = personWebServiceClient.Search(new PersonSearchParametersDto { AgeFrom = 2 }, 7, "sss@asd.com");
             return View();
         }
 
@@ -39,11 +29,6 @@ namespace Web.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        public void ReSeed(int count = 20)
-        {
-            var persons = _personService.ReSeed(count);
         }
     }
 }
