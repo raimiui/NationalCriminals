@@ -1,3 +1,5 @@
+Requirements are described in Assignment.txt.
+
 ****** Setup: ****** 
 To run locally:
 
