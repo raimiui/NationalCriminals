@@ -1,47 +1,27 @@
-I have not worked with EF before, so did not investigate various scenarios of using it (i.e. auto seeding with data, deployment).
+****** Setup: ****** 
+To run locally:
 
-Microsoft unity as DI.
-Types registering moved to Configurations project so that Web project would not have direct dependencies on Repository project.
+- Set multiple startup projects (Web and MVC)
+- Run.
+- In web app, register user in.
+- When logged in enter url http://localhost:56513/PersonSearch/ReSeedDb?count=20 
+  This will populate database with test data.
 
+****** Considerations/suggestions: ****** 
 
 I would consider launching separate thread from web app, so that user gets 200 response instantly.
-Web app is simple currently. Its just a proxy 
-
-
-Return validation messages from WCF?
-
-Autommaper added for WCF contract mapping
-Should add tests for mappings, search (without sending email, just check if data from PersonRepository matches search parameters).
-Tests for search query.
-Introduce queueing.
-
-Spent 3 hours trying to run WCF on Local IIS, did not succeed, continued with Express IIS (metadata issue).
-
-Deployment configs?..
-Consider extracting interfaces to separate libs.
-
-Logging for web, wcf....
+Return validation messages from WebService.
+Introduce message queueing for search. Send search message to message queue then read and process it. More reliability could be achieved.
 Localization support: Email body, subject to resource files.
-Retry email send.
-
-Configurable settings can be set in appSettings of the application configuration file.
-
-MVC search form: say successfully/not request was sent
-
+Email send with retry.
 Check for sql injection possibilities.
+Option to select user's email as default.
 
-
-Liko:
-Validacijos WCF
-Login
-
-Diagramas paslifuot
-
-Video
+****** Was out of time for: ****** 
+Introduce logging.
+Validation implementation in WCF.
+Unit testing. Should add tests for common work flow, mappings, search (without sending email, just check if data from PersonRepository matches search parameters).
 
 
 
 
-----------------
-Presentation: 
-Can search by part name
